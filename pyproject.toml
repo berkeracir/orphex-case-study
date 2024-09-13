@@ -6,10 +6,8 @@ target-version = ['py312']
 # Same as Black.
 line-length = 129
 target-version = "py312"
-# Avoid automatically removing unused imports in __init__.py files
-ignore-init-module-imports = true
-# do not consider any rule fixable
-fixable = []
+
+[tool.ruff.lint]
 # Skip rules
 extend-ignore = [
   # See https://github.com/PyCQA/pycodestyle/issues/373
@@ -17,8 +15,10 @@ extend-ignore = [
   # because black does not format strings longer than line limit
   "E501",
 ]
-
-[tool.ruff.lint]
+# do not consider any rule fixable
+fixable = []
+# Avoid automatically removing unused imports in __init__.py files
+ignore-init-module-imports = true
 # Enable Pyflakes (`F`) and pycodestyle (`E`) and (`W`) codes.
 select = ["E", "W", "F"]
 
