@@ -1,0 +1,55 @@
+[tool.black]
+line-length = 129
+target-version = ['py312']
+
+[tool.ruff]
+# Same as Black.
+line-length = 129
+target-version = "py312"
+# Avoid automatically removing unused imports in __init__.py files
+ignore-init-module-imports = true
+# do not consider any rule fixable
+fixable = []
+# Skip rules
+extend-ignore = [
+  # See https://github.com/PyCQA/pycodestyle/issues/373
+  "E203",
+  # because black does not format strings longer than line limit
+  "E501",
+]
+
+[tool.ruff.lint]
+# Enable Pyflakes (`F`) and pycodestyle (`E`) and (`W`) codes.
+select = ["E", "W", "F"]
+
+[tool.yapf]
+based_on_style = "pep8"
+spaces_before_comment = 4
+spaces_around_dict_delimiters = false
+spaces_around_list_delimiters = false
+allow_multiline_dictionary_keys = true
+dedent_closing_brackets = true
+each_dict_entry_on_separate_line = true
+force_multiline_dict = true
+split_complex_comprehension = true
+split_before_logical_operator = false
+indent_width = 4
+
+[tool.yapfignore]
+ignore_patterns = '''
+/(
+  \.git
+  | __pycache__
+  | \.venv
+)/
+'''
+
+[tool.pyright]
+pythonVersion = "3.12"
+typeCheckingMode = "basic"
+useLibraryCodeForTypes = true
+ignore = [
+  ".git",
+  "__pycache__",
+  ".venv"
+]

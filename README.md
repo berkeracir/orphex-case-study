@@ -10,7 +10,7 @@ You are provided with a dataset that tracks various metrics related to digital m
 
 ## Dataset
 
-[mockupinterviewdata.csv](./mockupinterviewdata.csv)
+[mockupinterviewdata.csv](./data/mockupinterviewdata.csv)
 
 ## Task
 
@@ -70,7 +70,10 @@ Using the results from the analysis, the candidate should be required to develop
 
 ### Installation
 
-*TODO*
+```
+python3.12 -m venv ".venv"
+source ./venv/bin/activate
+```
 
 ### Usage
 
