@@ -1,5 +1,9 @@
-from django.http import HttpResponse
+import logging
+
+from django.http import HttpResponse, HttpRequest
+
+logger = logging.getLogger("orphex.views")
 
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+def check_health(request: HttpRequest) -> HttpResponse:
+    return HttpResponse("health-check")
