@@ -1,4 +1,8 @@
+import logging
+
 from django.http import HttpResponse, HttpRequest
+
+logger = logging.getLogger("orphex.api.views")
 
 
 def get_conversion_rate(request: HttpRequest) -> HttpResponse:
