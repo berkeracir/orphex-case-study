@@ -78,16 +78,22 @@ def get_filtered_average_customer_performance_distributions(
     qs = CustomerPerformanceDistribution.objects
 
     if status is not None:
-        status_id = Status.objects.filter(text=status).get().id
-        qs.filter(fk_status_id=status_id)
+        db_status: Optional[Status] = Status.objects.filter(text=status).first()
+        if db_status is None:
+            return []
+        qs.filter(fk_status_id=db_status.id)
 
     if type is not None:
-        type_id = Type.objects.filter(text=type).get().id
-        qs.filter(fk_type_id=type_id)
+        db_type: Optional[Type] = Type.objects.filter(text=type).first()
+        if db_type is None:
+            return []
+        qs.filter(fk_type_id=db_type.id)
 
     if category is not None:
-        category_id = Category.objects.filter(text=category).get().id
-        qs.filter(fk_category_id=category_id)
+        db_category: Optional[Category] = Category.objects.filter(text=category).first()
+        if db_category is None:
+            return []
+        qs.filter(fk_category_id=db_category.id)
 
     filtered_customer_performance_distributions = list(
         qs.values("customer_id")

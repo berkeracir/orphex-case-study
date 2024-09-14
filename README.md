@@ -70,7 +70,7 @@ Using the results from the analysis, the candidate should be required to develop
 
 ```[bash]
 python3.12 -m venv ".venv"
-source ./venv/bin/activate
+source ./.venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -87,6 +87,7 @@ To create a admin/super user:
 python manage.py createsuperuser
 ```
 
+- To health check : http://localhost:8000/health-check/
 - To login http://localhost:8000/admin or http://localhost:8000/api-auth/login/
 - To process provided dataset: http://localhost:8000/worker/process-data
 - To get conversion rates for each customer: http://localhost:8000/api/conversion-rate/
