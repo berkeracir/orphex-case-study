@@ -16,13 +16,13 @@ You are provided with a dataset that tracks various metrics related to digital m
 
 ### Part 1: Data Analysis (Pandas)
 
-- [ ] **Conversion Rate Calculation:**
+- [X] **Conversion Rate Calculation:**
 
 - Calculate the conversion rate for each `customer_id`, defined as the ratio of conversions to revenue.
 
 - Identify the `customer_id` with the highest and lowest conversion rates.
 
-- [ ] **Status-Based Analysis:**
+- [X] **Status-Based Analysis:**
 
 - Analyze the distribution of status (e.g., `ENABLED` vs. `HIDDEN`) across different types and categories.
 
@@ -44,11 +44,11 @@ You are provided with a dataset that tracks various metrics related to digital m
 
 Using the results from the analysis, the candidate should be required to develop a Django RESTful API with the following endpoints:
 
-- [ ] **Endpoint 1:** /api/conversion-rate/
+- [X] **Endpoint 1:** /api/conversion-rate/
 
 - Returns the conversion rate for each `customer_id`, along with the highest and lowest conversion rates.
 
-- [ ] **Endpoint 2:** /api/status-distribution/
+- [X] **Endpoint 2:** /api/status-distribution/
 
 - Provides a summary of the distribution of status across different types and categories. This should include total revenue and conversions for each status.
 
