@@ -16,7 +16,8 @@ from orphex.common.db.operations import (
 from orphex.common.df.operations import get_unique_values
 from orphex.conversion_rate.db.operations import create_or_update_customer_conversion_rates
 from orphex.conversion_rate.df.operations import get_customer_conversion_rates
-from orphex.status_distribution.df.operations import get_status_distribution
+from orphex.status_distribution.db.operations import create_or_update_status_distributions
+from orphex.status_distribution.df.operations import get_status_distributions
 
 
 logger = logging.getLogger("orphex.worker.views")
@@ -36,7 +37,7 @@ def process_data(request: Request) -> Response:
     unique_categories = get_unique_values(df, "category")
 
     customer_conversion_rates = get_customer_conversion_rates(df[["customer_id", "revenue", "conversions"]])
-    status_distribution = get_status_distribution(df[["revenue", "conversions", "status", "type", "category"]])
+    status_distributions = get_status_distributions(df[["revenue", "conversions", "status", "type", "category"]])
 
     try:
         with transaction.atomic():
@@ -45,6 +46,7 @@ def process_data(request: Request) -> Response:
             categories = create_or_update_categories(unique_categories)
 
             create_or_update_customer_conversion_rates(customer_conversion_rates)
+            create_or_update_status_distributions(status_distributions, statuses, types, categories)
 
         logger.debug(f"statuses={statuses}, types={types}, categories={categories}")
     except BaseException:

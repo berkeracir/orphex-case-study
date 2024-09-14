@@ -9,7 +9,7 @@ from orphex.status_distribution.types import StatusDistributionTuple
 logger = logging.getLogger("orphex.status_distribution.df.operations")
 
 
-def get_status_distribution(df: pd.DataFrame) -> List[StatusDistributionTuple]:
+def get_status_distributions(df: pd.DataFrame) -> List[StatusDistributionTuple]:
     """Gets status distribution over type and category with total revenues and total conversion
 
     Args:

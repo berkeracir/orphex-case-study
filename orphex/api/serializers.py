@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from orphex.models import CustomerConversionRate
+from orphex.models import CustomerConversionRate, StatusDistribution
 
 
 class ConversionRateSerializer(serializers.ModelSerializer):
@@ -19,3 +19,9 @@ class ConversionRatesSerializer(serializers.Serializer):
 
     def get_max_rate(self, obj):
         return obj["conversion_rates"][-1]["rate"] if len(obj["conversion_rates"]) > 0 else None
+
+
+class StatusDistributionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StatusDistribution
+        fields = "status", "type", "category", "total_revenue", "total_conversions"
