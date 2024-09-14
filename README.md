@@ -62,19 +62,39 @@ Using the results from the analysis, the candidate should be required to develop
 
 ## Getting Started
 
-*TODO*
-
 ### Prerequisites
 
-*TODO*
+- [Python3.12](https://www.python.org/downloads/)
 
 ### Installation
 
-```
+```[bash]
 python3.12 -m venv ".venv"
 source ./venv/bin/activate
+pip install -r requirements.txt
 ```
 
 ### Usage
 
-*TODO*
+```[bash]
+python manage.py migrate
+python manage.py runserver
+```
+
+To create a admin/super user:
+
+```[bash]
+python manage.py createsuperuser
+```
+
+- To login http://localhost:8000/admin or http://localhost:8000/api-auth/login/
+- To process provided dataset: http://localhost:8000/worker/process-data
+- To get conversion rates for each customer: http://localhost:8000/api/conversion-rate/
+- To get status distributions: http://localhost:8000/api/status-distribution/
+- To get category and type performances: http://localhost:8000/api/category-type-performance/
+- To get filtered and averaged revenue and conversions for each customer: http://localhost:8000/api/filtered-aggregation
+
+### Future works
+
+- Swagger API for provided endpoint
+- Unit tests

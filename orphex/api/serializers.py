@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
 from orphex.models import CustomerPerformance, PerformanceDistribution
-from orphex.performance_distribution.types import TypeAndCategoryPerformanceDistributionTuple
 
 
 class ConversionRateSerializer(serializers.ModelSerializer):

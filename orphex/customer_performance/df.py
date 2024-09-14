@@ -37,10 +37,10 @@ def calculate_customer_performances(df: pd.DataFrame) -> List[CustomerPerformanc
         logger.info(f"Customer Id: '{customer_id}', Conversion Rate: {rate}")
 
     # identify customer_ids with lowest and highest conversion rates.
-    customer_id_with_lowest_conversion_rate, lowest_rate = df.iloc[df["rate"].idxmin()][["customer_id", "rate"]]  # type: ignore
-    customer_id_with_highest_conversion_rate, highest_rate = df.iloc[df["rate"].idxmax()][["customer_id", "rate"]]  # type: ignore
-    logger.info(f"Customer Id: '{customer_id_with_lowest_conversion_rate}' with the lowest Conversion Rate: {lowest_rate}")
-    logger.info(f"Customer Id: '{customer_id_with_highest_conversion_rate}' with the highest Conversion Rate: {highest_rate}")
+    customer_id_with_lowest_rate, lowest_rate = df.iloc[df["rate"].idxmin()][["customer_id", "rate"]]  # type: ignore
+    customer_id_with_highest_rate, highest_rate = df.iloc[df["rate"].idxmax()][["customer_id", "rate"]]  # type: ignore
+    logger.info(f"Customer Id: '{customer_id_with_lowest_rate}' with the lowest Conversion Rate: {lowest_rate}")
+    logger.info(f"Customer Id: '{customer_id_with_highest_rate}' with the highest Conversion Rate: {highest_rate}")
     logger.info("Task 1.1 - End of Conversion Rate Calculation")
 
     return result

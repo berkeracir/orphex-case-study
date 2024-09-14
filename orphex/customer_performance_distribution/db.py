@@ -24,16 +24,18 @@ def create_or_update_customer_performance_distributions(
     """Creates or updates PerformanceDistributions from PerformanceDistributionTuples
 
     Args:
-        customer_performance_distributions (List[CustomerPerformanceDistributionTuple]): List of CustomerPerformanceDistributionTuples
+        customer_performance_distributions (List[CustomerPerformanceDistributionTuple]): List of
+            CustomerPerformanceDistributionTuples
         status_text2status_id (Dict[str, int]): Dictionary of Status texts to their ids
         type_text2type_id (Dict[str, int]): Dictionary of Type texts to their ids
         category_text2category_id (Dict[str, int]): Dictionary of Category texts to their ids
     """
     sql = dedent(
         f"""
-        INSERT INTO `{CustomerPerformanceDistribution._meta.db_table}` 
+        INSERT INTO `{CustomerPerformanceDistribution._meta.db_table}`
             (`customer_id`, `fk_status_id`, `fk_type_id`, `fk_category_id`, `total_revenue`, `total_conversions`, `count`)
-        VALUES (%(customer_id)s, %(fk_status_id)s, %(fk_type_id)s, %(fk_category_id)s, %(total_revenue)s, %(total_conversions)s, %(count)s)
+        VALUES
+            (%(customer_id)s, %(fk_status_id)s, %(fk_type_id)s, %(fk_category_id)s, %(total_revenue)s, %(total_conversions)s, %(count)s)
         ON CONFLICT (`customer_id`, `fk_status_id`, `fk_type_id`, `fk_category_id`) DO UPDATE SET
             `total_revenue` = `total_revenue` + `excluded`.`total_revenue`,
             `total_conversions` = `total_conversions` + `excluded`.`total_conversions`,

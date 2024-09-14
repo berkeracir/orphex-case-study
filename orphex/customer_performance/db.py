@@ -19,7 +19,8 @@ def create_or_update_customer_performances(customer_performances: List[CustomerP
     """
     sql = dedent(
         f"""
-        INSERT INTO `{CustomerPerformance._meta.db_table}` (`customer_id`, `total_revenue`, `total_conversions`, `conversion_rate`, `count`)
+        INSERT INTO `{CustomerPerformance._meta.db_table}`
+            (`customer_id`, `total_revenue`, `total_conversions`, `conversion_rate`, `count`)
         VALUES (%(customer_id)s, %(total_revenue)s, %(total_conversions)s, %(conversion_rate)s, %(count)s)
         ON CONFLICT (`customer_id`) DO UPDATE SET
             `total_revenue` = `total_revenue` + `excluded`.`total_revenue`,

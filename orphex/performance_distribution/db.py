@@ -28,7 +28,8 @@ def create_or_update_performance_distributions(
     """
     sql = dedent(
         f"""
-        INSERT INTO `{PerformanceDistribution._meta.db_table}` (`fk_status_id`, `fk_type_id`, `fk_category_id`, `total_revenue`, `total_conversions`, `count`)
+        INSERT INTO `{PerformanceDistribution._meta.db_table}`
+            (`fk_status_id`, `fk_type_id`, `fk_category_id`, `total_revenue`, `total_conversions`, `count`)
         VALUES (%(fk_status_id)s, %(fk_type_id)s, %(fk_category_id)s, %(total_revenue)s, %(total_conversions)s, %(count)s)
         ON CONFLICT (`fk_status_id`, `fk_type_id`, `fk_category_id`) DO UPDATE SET
             `total_revenue` = `total_revenue` + `excluded`.`total_revenue`,
