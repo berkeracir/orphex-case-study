@@ -45,6 +45,7 @@ class PerformanceDistribution(AbstractBaseModel):
 
     class Meta:
         unique_together = ("fk_status", "fk_type", "fk_category")
+        indexes = [models.Index(fields=["fk_type", "fk_category", "total_conversions", "total_revenue"])]
 
     @property
     def status_id(self) -> int:

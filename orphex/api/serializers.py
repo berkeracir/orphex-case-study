@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from orphex.models import CustomerPerformance, PerformanceDistribution
+from orphex.performance_distribution.types import TypeAndCategoryPerformanceDistributionTuple
 
 
 class ConversionRateSerializer(serializers.ModelSerializer):
@@ -27,3 +28,22 @@ class StatusDistributionSerializer(serializers.ModelSerializer):
     class Meta:
         model = PerformanceDistribution
         fields = "status", "type", "category", "total_revenue", "total_conversions"
+
+
+class CategoryTypePerformanceSerializer(serializers.Serializer):
+    type = serializers.CharField()
+    category = serializers.CharField()
+    total_revenue = serializers.FloatField()
+    total_conversions = serializers.IntegerField()
+
+
+class CategoryTypePerformancesSerializer(serializers.Serializer):
+    category_and_type_performances = serializers.ListField()
+    top_performing_category = serializers.CharField(required=False)
+    top_performing_type = serializers.CharField(required=False)
+
+    def get_top_performing_category(self, obj):
+        return obj["category_and_type_performances"][0]["category"] if len(obj["category_and_type_performances"]) > 0 else None
+
+    def get_top_performing_type(self, obj):
+        return obj["category_and_type_performances"][0]["type"] if len(obj["category_and_type_performances"]) > 0 else None

@@ -8,3 +8,10 @@ class PerformanceDistributionTuple(NamedTuple):
     total_revenue: float
     total_conversions: int
     count: int
+
+
+class TypeAndCategoryPerformanceDistributionTuple(NamedTuple):
+    type: str
+    category: str
+    total_revenue: float
+    total_conversions: int

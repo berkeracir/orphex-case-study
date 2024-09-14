@@ -3,9 +3,10 @@ from textwrap import dedent
 from typing import List, Dict
 
 from django.db import connection
+from django.db.models import Sum
 
-from orphex.performance_distribution.types import PerformanceDistributionTuple
-from orphex.models import PerformanceDistribution, Status, Type, Category
+from orphex.performance_distribution.types import PerformanceDistributionTuple, TypeAndCategoryPerformanceDistributionTuple
+from orphex.models import PerformanceDistribution, Type, Category
 
 
 logger = logging.getLogger("orphex.performance_distribution.db")
@@ -60,3 +61,36 @@ def get_all_performance_distributions() -> List[PerformanceDistribution]:
     """
     # TODO(berker) pagination, order by?
     return list(PerformanceDistribution.objects.all())
+
+
+def get_performance_distributions_by_type_and_category() -> List[TypeAndCategoryPerformanceDistributionTuple]:
+    """Gets every PerformanceDistributions by type and category, ordered by X
+
+    Returns:
+        List[TypeAndCategoryPerformanceDistributionTuple]: List of TypeAndCategoryPerformanceDistributionTuples
+    """
+    type_and_category_performance_distributions = list(
+        PerformanceDistribution.objects.values("fk_type", "fk_category")
+        .annotate(total_revenue=Sum("total_revenue"), total_conversions=Sum("total_conversions"))
+        .order_by("-total_revenue", "-total_conversions")
+        .values_list("fk_type", "fk_category", "total_revenue", "total_conversions")
+    )
+
+    type_ids = set([type_id for type_id, *_ in type_and_category_performance_distributions])
+    types = list(Type.objects.filter(id__in=type_ids))
+    type_id2text = {type.id: type.text for type in types}
+
+    category_ids = list(set([category_id for _, category_id, *_ in type_and_category_performance_distributions]))
+    categories = list(Category.objects.filter(id__in=category_ids))
+    category_id2text = {category.id: category.text for category in categories}
+
+    result = [
+        TypeAndCategoryPerformanceDistributionTuple(
+            type=type_id2text[type_id],
+            category=category_id2text[category_id],
+            total_revenue=total_revenue,
+            total_conversions=total_conversions,
+        )
+        for type_id, category_id, total_revenue, total_conversions in type_and_category_performance_distributions
+    ]
+    return result

@@ -28,13 +28,13 @@ You are provided with a dataset that tracks various metrics related to digital m
 
 - Determine the total revenue and conversions for each status type.
 
-- [ ] **Category and Type Performance:**
+- [X] **Category and Type Performance:**
 
 - Calculate the total revenue and total conversions grouped by category and type.
 
 - Identify the category and type combination that generates the most conversions.
 
-- [ ] **Filter and Aggregate:**
+- [X] **Filter and Aggregate:**
 
 - Filter the data to include only rows where type is `CONVERSION` and analyze the revenue and conversions.
 
@@ -52,7 +52,7 @@ Using the results from the analysis, the candidate should be required to develop
 
 - Provides a summary of the distribution of status across different types and categories. This should include total revenue and conversions for each status.
 
-- [ ] **Endpoint 3:** /api/category-type-performance/
+- [X] **Endpoint 3:** /api/category-type-performance/
 
 - Returns the total revenue and conversions grouped by category and type. It should also highlight the top-performing category and type combination.
 

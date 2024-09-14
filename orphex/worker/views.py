@@ -13,9 +13,8 @@ from orphex.common.df import get_unique_values
 from orphex.customer_performance.db import create_or_update_customer_performances
 from orphex.customer_performance.df import calculate_customer_performances
 from orphex.performance_distribution.db import create_or_update_performance_distributions
-from orphex.performance_distribution.df import get_performance_distributions
+from orphex.performance_distribution.df import get_performance_distributions, get_performance_distribution_by_type_and_category
 
-from orphex.category_and_type_performance.df.operations import get_category_and_type_performance
 from orphex.filter_and_aggregate.df.operations import filter_and_aggregate
 
 
@@ -43,7 +42,7 @@ def process_data(_: Request) -> Response:
     # task 1.2 - status-based analysis
     performance_distributions = get_performance_distributions(df[["revenue", "conversions", "status", "type", "category"]])
     # task 1.3 - category and type performance
-    get_category_and_type_performance(df[["revenue", "conversions", "type", "category"]])
+    get_performance_distribution_by_type_and_category(df[["revenue", "conversions", "type", "category"]])
     # task 1.4 - filter and aggregate
     result = filter_and_aggregate(df[["customer_id", "revenue", "conversions", "status", "type", "category"]], type="CONVERSION")
 
