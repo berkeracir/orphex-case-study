@@ -5,11 +5,13 @@ from django.http import HttpResponse, HttpRequest
 import pandas as pd
 import numpy as np
 
-from orphex.worker.process_data.operations import (
+from orphex.common.operations import (
     create_or_update_types,
     create_or_update_categories,
     create_or_update_statuses,
-    get_customer_conversion_rates,
+)
+from orphex.conversion_rate.operations import (
+    get_customer_conversion_rates_from_df,
     create_or_update_customer_conversion_rates,
 )
 
@@ -29,7 +31,7 @@ def process_data(request: HttpRequest) -> HttpResponse:
     unique_types = list(map(str, df["type"].unique().tolist()))
     unique_categories = list(map(str, df["category"].unique().tolist()))
 
-    customer_conversion_rates = get_customer_conversion_rates(df[["customer_id", "revenue", "conversions"]])
+    customer_conversion_rates = get_customer_conversion_rates_from_df(df[["customer_id", "revenue", "conversions"]])
 
     try:
         with transaction.atomic():
