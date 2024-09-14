@@ -1,11 +1,13 @@
 from rest_framework import serializers
 
-from orphex.models import CustomerConversionRate, StatusDistribution
+from orphex.models import CustomerPerformance, PerformanceDistribution
 
 
 class ConversionRateSerializer(serializers.ModelSerializer):
+    rate = serializers.FloatField(source="conversion_rate")
+
     class Meta:
-        model = CustomerConversionRate
+        model = CustomerPerformance
         fields = ["customer_id", "rate"]
 
 
@@ -23,5 +25,5 @@ class ConversionRatesSerializer(serializers.Serializer):
 
 class StatusDistributionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = StatusDistribution
+        model = PerformanceDistribution
         fields = "status", "type", "category", "total_revenue", "total_conversions"

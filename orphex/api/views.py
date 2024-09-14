@@ -8,37 +8,38 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK
 
 from orphex.api.serializers import ConversionRateSerializer, ConversionRatesSerializer, StatusDistributionSerializer
-from orphex.conversion_rate.db.operations import get_customer_conversion_rates as get_customer_conversion_rates_from_db
-from orphex.status_distribution.db.operations import get_status_distributions as get_status_distributions_from_db
+from orphex.customer_performance.db import get_customer_performances_by_conversion_rates
+from orphex.performance_distribution.db import get_all_performance_distributions
+
 
 logger = logging.getLogger("orphex.api.views")
 
 
 @api_view(["GET"])
-@permission_classes((permissions.AllowAny,))  # TODO(berker)
-def get_customer_conversion_rates(request: Request) -> Response:
+@permission_classes((permissions.AllowAny,))
+def get_customer_conversion_rates(_: Request) -> Response:
     # TODO(berker) pagination?
-    conversion_rates = get_customer_conversion_rates_from_db()
-    serializer = ConversionRatesSerializer({"conversion_rates": ConversionRateSerializer(conversion_rates, many=True).data})
+    customer_performances = get_customer_performances_by_conversion_rates()
+    serializer = ConversionRatesSerializer({"conversion_rates": ConversionRateSerializer(customer_performances, many=True).data})
+    return Response(status=HTTP_200_OK, data=serializer.data)
+
+
+@api_view(["GET"])
+@permission_classes((permissions.AllowAny,))
+def get_status_distributions(_: Request) -> Response:
+    # TODO(berker) pagination, order-by, status-type or status-category distribution filter?
+    performance_distributions = get_all_performance_distributions()
+    serializer = StatusDistributionSerializer(performance_distributions, many=True)
     return Response(status=HTTP_200_OK, data=serializer.data)
 
 
 @api_view(["GET"])
 @permission_classes((permissions.AllowAny,))  # TODO(berker)
-def get_status_distributions(request: HttpRequest) -> Response:
-    # TODO(berker) pagination, order direction, status-type or status-category distribution?
-    status_distributions = get_status_distributions_from_db()
-    serializer = StatusDistributionSerializer(status_distributions, many=True)
-    return Response(status=HTTP_200_OK, data=serializer.data)
+def get_category_type_performance(_: Request) -> Response:
+    return Response(status=HTTP_200_OK)
 
 
 @api_view(["GET"])
 @permission_classes((permissions.AllowAny,))  # TODO(berker)
-def get_category_type_performance(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("category-type-performance")
-
-
-@api_view(["GET"])
-@permission_classes((permissions.AllowAny,))  # TODO(berker)
-def get_filtered_aggregation(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("filtered-aggregation")
+def get_filtered_aggregation(_: Request) -> Response:
+    return Response(status=HTTP_200_OK)

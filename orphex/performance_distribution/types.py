@@ -1,8 +1,10 @@
 from typing import NamedTuple
 
 
-class CategoryAndTypePerformanceTuple(NamedTuple):
+class PerformanceDistributionTuple(NamedTuple):
+    status: str
     type: str
     category: str
     total_revenue: float
     total_conversions: int
+    count: int

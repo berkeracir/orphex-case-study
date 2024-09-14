@@ -4,7 +4,7 @@ from typing import List
 from orphex.models import Status, Type, Category
 
 
-logger = logging.getLogger("orphex.common.db.operations")
+logger = logging.getLogger("orphex.common.db")
 
 
 def create_or_update_statuses(statuses: List[str]) -> List[Status]:

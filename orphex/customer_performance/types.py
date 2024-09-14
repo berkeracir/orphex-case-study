@@ -1,7 +1,8 @@
 from typing import NamedTuple
 
 
-class CustomerConversionRateTuple(NamedTuple):
+class CustomerPerformanceTuple(NamedTuple):
     customer_id: str
     total_revenue: float
     total_conversions: int
+    count: int
