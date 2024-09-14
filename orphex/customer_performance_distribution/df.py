@@ -45,7 +45,7 @@ def calculate_customer_distributed_performances(df: pd.DataFrame) -> List[Custom
         )
 
     # Filter the data to include only rows where type is CONVERSION and analyze the revenue and conversions.
-    df = df[df["type"] == "CONVERSION"]
+    df = df[df["type"] == "CONVERSION"] # type: ignore
     # Aggregate this filtered data to provide the average revenue and conversions for each customer_id.
     df = df.groupby("customer_id").agg({"revenue": "sum", "conversions": "sum", "count": "sum"}).reset_index()
     for customer_id, total_revenue, total_conversions, count in zip(
