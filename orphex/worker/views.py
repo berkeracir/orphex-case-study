@@ -1,8 +1,12 @@
 import logging
 
 from django.db import transaction
-from django.http import HttpResponse, HttpRequest
 import pandas as pd
+from rest_framework import permissions
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.request import Request
+from rest_framework.response import Response
+from rest_framework.status import HTTP_200_OK, HTTP_500_INTERNAL_SERVER_ERROR
 
 from orphex.common.db.operations import (
     create_or_update_types,
@@ -17,7 +21,9 @@ from orphex.conversion_rate.df.operations import get_customer_conversion_rates a
 logger = logging.getLogger("orphex.worker.views")
 
 
-def process_data(request: HttpRequest) -> HttpResponse:
+@api_view(["POST"])
+@permission_classes((permissions.AllowAny,))  # TODO(berker)
+def process_data(request: Request) -> Response:
     # decide somehow whether this file has been processed before or not, if processed (successfully) before, do not process again
 
     # 'customer_id', 'revenue', 'conversions', 'status', 'type', 'category', 'date', 'impressions', 'clicks'
@@ -37,8 +43,10 @@ def process_data(request: HttpRequest) -> HttpResponse:
             categories = create_or_update_categories(unique_categories)
 
             create_or_update_customer_conversion_rates(customer_conversion_rates)
+
+        logger.debug(f"statuses={statuses}, types={types}, categories={categories}")
     except BaseException:
         logger.exception("Failed to create or update DB models.")
-        return HttpResponse("error in process-data")
+        return Response(status=HTTP_500_INTERNAL_SERVER_ERROR)
     else:
-        return HttpResponse("success in process-data")
+        return Response(status=HTTP_200_OK)

@@ -14,7 +14,7 @@ def create_or_update_customer_conversion_rates(customer_conversion_rates: List[C
     """Creates or updates CustomerConversionRate models
 
     Args:
-        customer_conversion_rates (List[CustomerConversionRate]): _description_
+        customer_conversion_rates (List[CustomerConversionRate]): List of CustomerConversionRate instances
     """
     sql = dedent(
         f"""
@@ -41,9 +41,16 @@ def create_or_update_customer_conversion_rates(customer_conversion_rates: List[C
         }
         for customer_conversion_rate in customer_conversion_rates
     ]
-    
+
     with connection.cursor() as cursor:
         cursor.executemany(sql, param_list)
 
 
-def get_customer_conversion_rates_from_db
+def get_customer_conversion_rates() -> List[CustomerConversionRate]:
+    """Gets every CustomerConversionRate models
+
+    Returns:
+        List[CustomerConversionRate]: List of CustomerConversionRate models
+    """
+    # TODO(berker) pagination?
+    return list(CustomerConversionRate.objects.order_by("rate"))
