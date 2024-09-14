@@ -10,12 +10,13 @@ from rest_framework.status import HTTP_200_OK, HTTP_500_INTERNAL_SERVER_ERROR
 
 from orphex.common.db import create_or_update_types, create_or_update_categories, create_or_update_statuses
 from orphex.common.df import get_unique_values
+
+from orphex.customer_performance_distribution.db import create_or_update_customer_performance_distributions
+from orphex.customer_performance_distribution.df import calculate_customer_distributed_performances
 from orphex.customer_performance.db import create_or_update_customer_performances
 from orphex.customer_performance.df import calculate_customer_performances
 from orphex.performance_distribution.db import create_or_update_performance_distributions
 from orphex.performance_distribution.df import get_performance_distributions, get_performance_distribution_by_type_and_category
-
-from orphex.filter_and_aggregate.df.operations import filter_and_aggregate
 
 
 logger = logging.getLogger("orphex.worker.views")
@@ -44,7 +45,9 @@ def process_data(_: Request) -> Response:
     # task 1.3 - category and type performance
     get_performance_distribution_by_type_and_category(df[["revenue", "conversions", "type", "category"]])
     # task 1.4 - filter and aggregate
-    result = filter_and_aggregate(df[["customer_id", "revenue", "conversions", "status", "type", "category"]], type="CONVERSION")
+    customer_distributed_performances = calculate_customer_distributed_performances(
+        df[["customer_id", "revenue", "conversions", "status", "type", "category"]]
+    )
 
     try:
         with transaction.atomic():
@@ -60,6 +63,9 @@ def process_data(_: Request) -> Response:
             create_or_update_customer_performances(customer_performances)
             create_or_update_performance_distributions(
                 performance_distributions, status_text2status_id, type_text2type_id, category_text2category_id
+            )
+            create_or_update_customer_performance_distributions(
+                customer_distributed_performances, status_text2status_id, type_text2type_id, category_text2category_id
             )
     except BaseException:
         logger.exception("Failed to create or update DB models.")

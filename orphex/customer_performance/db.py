@@ -53,7 +53,7 @@ def create_or_update_customer_performances(customer_performances: List[CustomerP
         cursor.executemany(sql, param_list)
 
 
-def get_customer_performances_by_conversion_rates(desc: bool = True) -> List[CustomerPerformance]:
+def get_customer_performances_by_conversion_rates() -> List[CustomerPerformance]:
     """Gets every CustomerPerformances, ordered by conversion rates
 
     Args:
@@ -63,4 +63,4 @@ def get_customer_performances_by_conversion_rates(desc: bool = True) -> List[Cus
         List[CustomerPerformance]: List of CustomerPerformances
     """
     # TODO(berker) pagination?
-    return list(CustomerPerformance.objects.order_by("conversion_rate" if desc else "-conversion_rate"))
+    return list(CustomerPerformance.objects.order_by("conversion_rate"))

@@ -47,3 +47,9 @@ class CategoryTypePerformancesSerializer(serializers.Serializer):
 
     def get_top_performing_type(self, obj):
         return obj["category_and_type_performances"][0]["type"] if len(obj["category_and_type_performances"]) > 0 else None
+
+
+class FilteredAverageCustomerPerformanceDistributionSerializer(serializers.Serializer):
+    customer_id = serializers.CharField()
+    average_revenue = serializers.FloatField()
+    average_conversions = serializers.FloatField()

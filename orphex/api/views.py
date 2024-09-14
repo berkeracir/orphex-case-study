@@ -12,8 +12,10 @@ from orphex.api.serializers import (
     StatusDistributionSerializer,
     CategoryTypePerformanceSerializer,
     CategoryTypePerformancesSerializer,
+    FilteredAverageCustomerPerformanceDistributionSerializer,
 )
 from orphex.customer_performance.db import get_customer_performances_by_conversion_rates
+from orphex.customer_performance_distribution.db import get_filtered_average_customer_performance_distributions
 from orphex.performance_distribution.db import (
     get_all_performance_distributions,
     get_performance_distributions_by_type_and_category,
@@ -55,4 +57,7 @@ def get_category_type_performance(_: Request) -> Response:
 @api_view(["GET"])
 @permission_classes((permissions.AllowAny,))  # TODO(berker)
 def get_filtered_aggregation(_: Request) -> Response:
-    return Response(status=HTTP_200_OK)
+    # TODO(berker) pagination?, status/type/category from request
+    average_customer_performance_distributions = get_filtered_average_customer_performance_distributions(type="CONVERSION")
+    serializer = FilteredAverageCustomerPerformanceDistributionSerializer(average_customer_performance_distributions, many=True)
+    return Response(status=HTTP_200_OK, data=serializer.data)

@@ -74,7 +74,7 @@ class PerformanceDistribution(AbstractBaseModel):
 
 class CustomerPerformanceDistribution(AbstractBaseModel):
     id = models.AutoField(primary_key=True)
-    customer_id = models.TextField(null=False, unique=True)
+    customer_id = models.TextField(null=False)
     fk_status = models.ForeignKey(Status, on_delete=models.RESTRICT, null=False)
     fk_type = models.ForeignKey(Type, on_delete=models.RESTRICT, null=False)
     fk_category = models.ForeignKey(Category, on_delete=models.RESTRICT, null=False)
@@ -84,6 +84,16 @@ class CustomerPerformanceDistribution(AbstractBaseModel):
 
     class Meta:
         unique_together = ("customer_id", "fk_status", "fk_type", "fk_category")
+        indexes = [
+            models.Index(fields=["fk_status", "fk_type", "fk_category", "customer_id", "total_conversions", "total_revenue"]),
+            models.Index(fields=["fk_status", "fk_type", "customer_id", "total_conversions", "total_revenue"]),
+            models.Index(fields=["fk_status", "fk_category", "customer_id", "total_conversions", "total_revenue"]),
+            models.Index(fields=["fk_type", "fk_category", "customer_id", "total_conversions", "total_revenue"]),
+            models.Index(fields=["fk_status", "customer_id", "total_conversions", "total_revenue"]),
+            models.Index(fields=["fk_type", "customer_id", "total_conversions", "total_revenue"]),
+            models.Index(fields=["fk_category", "customer_id", "total_conversions", "total_revenue"]),
+            models.Index(fields=["customer_id", "total_conversions", "total_revenue"]),
+        ]
 
     @property
     def status_id(self) -> int:

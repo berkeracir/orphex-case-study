@@ -64,7 +64,7 @@ def get_all_performance_distributions() -> List[PerformanceDistribution]:
 
 
 def get_performance_distributions_by_type_and_category() -> List[TypeAndCategoryPerformanceDistributionTuple]:
-    """Gets every PerformanceDistributions by type and category, ordered by X
+    """Gets every PerformanceDistributions by type and category, ordered by total revenue and total conversions
 
     Returns:
         List[TypeAndCategoryPerformanceDistributionTuple]: List of TypeAndCategoryPerformanceDistributionTuples

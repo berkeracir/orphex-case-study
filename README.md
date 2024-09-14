@@ -56,7 +56,7 @@ Using the results from the analysis, the candidate should be required to develop
 
 - Returns the total revenue and conversions grouped by category and type. It should also highlight the top-performing category and type combination.
 
-- [ ] **Endpoint 4:** /api/filtered-aggregation/
+- [X] **Endpoint 4:** /api/filtered-aggregation/
 
 - Exposes aggregated data for rows where type is `CONVERSION`, returning the average revenue and conversions per `customer_id`.
 

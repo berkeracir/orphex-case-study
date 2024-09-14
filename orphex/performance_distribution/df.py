@@ -68,11 +68,11 @@ def get_performance_distribution_by_type_and_category(df: pd.DataFrame) -> List[
     ):
         result.append(
             TypeAndCategoryPerformanceDistributionTuple(
-                type=type, category=category, total_revenue=total_revenue, total_conversions=total_conversions, count=count
+                type=type, category=category, total_revenue=total_revenue, total_conversions=total_conversions
             )
         )
         logger.info(
-            f"Category: '{category}', Type: '{type}', Total Revenue: {total_revenue}, Total Conversions: {total_conversions}, "
+            f"Category: '{category}', Type: '{type}', Total Revenue: {total_revenue}, Total Conversions: {total_conversions}, Count: {count}"
         )
 
     # identify category and type with most conversions.
