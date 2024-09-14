@@ -8,6 +8,7 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_500_INTERNAL_SERVER_ERROR
 
+from orphex.category_and_type_performance.df.operations import get_category_and_type_performance
 from orphex.common.db.operations import (
     create_or_update_types,
     create_or_update_categories,
@@ -40,15 +41,24 @@ def process_data(request: Request) -> Response:
     customer_conversion_rates = get_customer_conversion_rates(df[["customer_id", "revenue", "conversions"]])
     # task 1.2 - status-based analysis
     status_distributions = get_status_distributions(df[["revenue", "conversions", "status", "type", "category"]])
+    # task 1.3 - category and type performance
+    get_category_and_type_performance(df[["revenue", "conversions", "type", "category"]])
 
     try:
         with transaction.atomic():
             statuses = create_or_update_statuses(unique_statuses)
+            status_text2status_id = {status.text: status.id for status in statuses}
+
             types = create_or_update_types(unique_types)
+            type_text2type_id = {type.text: type.id for type in types}
+
             categories = create_or_update_categories(unique_categories)
+            category_text2category_id = {category.text: category.id for category in categories}
 
             create_or_update_customer_conversion_rates(customer_conversion_rates)
-            create_or_update_status_distributions(status_distributions, statuses, types, categories)
+            create_or_update_status_distributions(
+                status_distributions, status_text2status_id, type_text2type_id, category_text2category_id
+            )
     except BaseException:
         logger.exception("Failed to create or update DB models.")
         return Response(status=HTTP_500_INTERNAL_SERVER_ERROR)

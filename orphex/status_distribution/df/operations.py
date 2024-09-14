@@ -20,15 +20,11 @@ def get_status_distributions(df: pd.DataFrame) -> List[StatusDistributionTuple]:
     """
     logger.info("Task 1.2 - Status-Based Analysis")
 
-    grouped_by_df = df.groupby(["status", "type", "category"]).agg({"revenue": "sum", "conversions": "sum"}).reset_index()
+    df = df.groupby(["status", "type", "category"]).agg({"revenue": "sum", "conversions": "sum"}).reset_index()
 
     result = []
     for status, type, category, total_revenue, total_conversions in zip(
-        grouped_by_df["status"],
-        grouped_by_df["type"],
-        grouped_by_df["category"],
-        grouped_by_df["revenue"],
-        grouped_by_df["conversions"],
+        df["status"], df["type"], df["category"], df["revenue"], df["conversions"]
     ):
         result.append(
             StatusDistributionTuple(
@@ -36,7 +32,7 @@ def get_status_distributions(df: pd.DataFrame) -> List[StatusDistributionTuple]:
             )
         )
         logger.info(
-            f"Status: {status}, Type: {type}, Category: {category}, Total Revenue: {total_revenue}, Total Conversions: {total_conversions}, "
+            f"Status: '{status}', Type: '{type}', Category: '{category}', Total Revenue: {total_revenue}, Total Conversions: {total_conversions}, "
         )
 
     logger.info("Task 1.2 - End of Status-Based Analysis")

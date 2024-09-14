@@ -32,13 +32,13 @@ def get_customer_conversion_rates(df: pd.DataFrame) -> List[CustomerConversionRa
                 customer_id=customer_id, total_revenue=total_revenue, total_conversions=total_conversions
             )
         )
-        logger.info(f"Customer id: {customer_id}, conversion rate: {rate}")
+        logger.info(f"Customer id: '{customer_id}', conversion rate: {rate}")
 
     # identify customer_ids with lowest and highest conversion rates.
-    customer_id_with_lowest_conversation_rate = df.iloc[df["rate"].idxmin()]["customer_id"]  # type: ignore
-    customer_id_with_highest_conversation_rate = df.iloc[df["rate"].idxmax()]["customer_id"]  # type: ignore
-    logger.info(f"Customer id with the lowest conversation rate: '{customer_id_with_lowest_conversation_rate}'")
-    logger.info(f"Customer id with the highest conversation rate: '{customer_id_with_highest_conversation_rate}'")
+    customer_id_with_lowest_conversion_rate, lowest_rate = df.iloc[df["rate"].idxmin()][["customer_id", "rate"]]  # type: ignore
+    customer_id_with_highest_conversion_rate, highest_rate = df.iloc[df["rate"].idxmax()][["customer_id", "rate"]]  # type: ignore
+    logger.info(f"Customer id: '{customer_id_with_lowest_conversion_rate}' with the lowest conversion rate: {lowest_rate}")
+    logger.info(f"Customer id: '{customer_id_with_highest_conversion_rate}' with the highest conversion rate: {highest_rate}")
     logger.info("Task 1.1 - End of Conversion Rate Calculation")
 
     return result
