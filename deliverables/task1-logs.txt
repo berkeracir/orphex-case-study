@@ -1,0 +1,198 @@
+
+[09/14/24 19:29:12] INFO     Task 1.1 - Conversion Rate Calculation                                                                               df.py:21
+                    INFO     Customer Id: 'Customer A', Conversion Rate: 0.003924789161501688                                                     df.py:37
+                    INFO     Customer Id: 'Customer B', Conversion Rate: 0.004050734868376329                                                     df.py:37
+                    INFO     Customer Id: 'Customer C', Conversion Rate: 0.003935861046978741                                                     df.py:37
+                    INFO     Customer Id: 'Customer A' with the lowest Conversion Rate: 0.003924789161501688                                      df.py:42
+                    INFO     Customer Id: 'Customer B' with the highest Conversion Rate: 0.004050734868376329                                     df.py:43
+                    INFO     Task 1.1 - End of Conversion Rate Calculation                                                                        df.py:44
+                    INFO     Task 1.2 - Status-Based Analysis                                                                                     df.py:21
+                    INFO     Status: 'ENABLED', Type: 'AWARENESS', Category: 'ELECTRONICS', Total Revenue: 685217.41, Total Conversions: 2379     df.py:41
+                    INFO     Status: 'ENABLED', Type: 'AWARENESS', Category: 'FASHION', Total Revenue: 502454.54, Total Conversions: 2008         df.py:41
+                    INFO     Status: 'ENABLED', Type: 'AWARENESS', Category: 'HOME', Total Revenue: 479077.22000000003, Total Conversions: 1604   df.py:41
+                    INFO     Status: 'ENABLED', Type: 'AWARENESS', Category: 'TOYS', Total Revenue: 422706.5, Total Conversions: 2054             df.py:41
+                    INFO     Status: 'ENABLED', Type: 'CONVERSION', Category: 'ELECTRONICS', Total Revenue: 409673.86, Total Conversions: 1884    df.py:41
+                    INFO     Status: 'ENABLED', Type: 'CONVERSION', Category: 'FASHION', Total Revenue: 655273.15, Total Conversions: 2869        df.py:41
+                    INFO     Status: 'ENABLED', Type: 'CONVERSION', Category: 'HOME', Total Revenue: 319789.88, Total Conversions: 1706           df.py:41
+                    INFO     Status: 'ENABLED', Type: 'CONVERSION', Category: 'TOYS', Total Revenue: 403522.74, Total Conversions: 1541           df.py:41
+                    INFO     Status: 'ENABLED', Type: 'ENGAGEMENT', Category: 'ELECTRONICS', Total Revenue: 547596.65, Total Conversions: 2174    df.py:41
+                    INFO     Status: 'ENABLED', Type: 'ENGAGEMENT', Category: 'FASHION', Total Revenue: 589899.93, Total Conversions: 1600        df.py:41
+                    INFO     Status: 'ENABLED', Type: 'ENGAGEMENT', Category: 'HOME', Total Revenue: 549341.0, Total Conversions: 2426            df.py:41
+                    INFO     Status: 'ENABLED', Type: 'ENGAGEMENT', Category: 'TOYS', Total Revenue: 557340.45, Total Conversions: 2194           df.py:41
+                    INFO     Status: 'HIDDEN', Type: 'AWARENESS', Category: 'ELECTRONICS', Total Revenue: 460163.36, Total Conversions: 1403      df.py:41
+                    INFO     Status: 'HIDDEN', Type: 'AWARENESS', Category: 'FASHION', Total Revenue: 798898.87, Total Conversions: 3111          df.py:41
+                    INFO     Status: 'HIDDEN', Type: 'AWARENESS', Category: 'HOME', Total Revenue: 293024.13, Total Conversions: 2142             df.py:41
+                    INFO     Status: 'HIDDEN', Type: 'AWARENESS', Category: 'TOYS', Total Revenue: 626661.88, Total Conversions: 1971             df.py:41
+                    INFO     Status: 'HIDDEN', Type: 'CONVERSION', Category: 'ELECTRONICS', Total Revenue: 311326.05, Total Conversions: 1564     df.py:41
+                    INFO     Status: 'HIDDEN', Type: 'CONVERSION', Category: 'FASHION', Total Revenue: 760716.8, Total Conversions: 2402          df.py:41
+                    INFO     Status: 'HIDDEN', Type: 'CONVERSION', Category: 'HOME', Total Revenue: 546185.76, Total Conversions: 2123            df.py:41
+                    INFO     Status: 'HIDDEN', Type: 'CONVERSION', Category: 'TOYS', Total Revenue: 406458.39, Total Conversions: 1782            df.py:41
+                    INFO     Status: 'HIDDEN', Type: 'ENGAGEMENT', Category: 'ELECTRONICS', Total Revenue: 620432.85, Total Conversions: 2778     df.py:41
+                    INFO     Status: 'HIDDEN', Type: 'ENGAGEMENT', Category: 'FASHION', Total Revenue: 632268.49, Total Conversions: 2025         df.py:41
+                    INFO     Status: 'HIDDEN', Type: 'ENGAGEMENT', Category: 'HOME', Total Revenue: 674453.83, Total Conversions: 2610            df.py:41
+                    INFO     Status: 'HIDDEN', Type: 'ENGAGEMENT', Category: 'TOYS', Total Revenue: 428146.37, Total Conversions: 2005            df.py:41
+                    INFO     Task 1.2 - End of Status-Based Analysis                                                                              df.py:45
+                    INFO     Task 1.3 - Category and Type Performance                                                                             df.py:59
+                    INFO     Category: 'ELECTRONICS', Type: 'AWARENESS', Total Revenue: 1145380.77, Total Conversions: 3782, Count: 42            df.py:74
+                    INFO     Category: 'FASHION', Type: 'AWARENESS', Total Revenue: 1301353.41, Total Conversions: 5119, Count: 56                df.py:74
+                    INFO     Category: 'HOME', Type: 'AWARENESS', Total Revenue: 772101.35, Total Conversions: 3746, Count: 31                    df.py:74
+                    INFO     Category: 'TOYS', Type: 'AWARENESS', Total Revenue: 1049368.38, Total Conversions: 4025, Count: 43                   df.py:74
+                    INFO     Category: 'ELECTRONICS', Type: 'CONVERSION', Total Revenue: 720999.91, Total Conversions: 3448, Count: 34            df.py:74
+                    INFO     Category: 'FASHION', Type: 'CONVERSION', Total Revenue: 1415989.95, Total Conversions: 5271, Count: 52               df.py:74
+                    INFO     Category: 'HOME', Type: 'CONVERSION', Total Revenue: 865975.64, Total Conversions: 3829, Count: 34                   df.py:74
+                    INFO     Category: 'TOYS', Type: 'CONVERSION', Total Revenue: 809981.13, Total Conversions: 3323, Count: 32                   df.py:74
+                    INFO     Category: 'ELECTRONICS', Type: 'ENGAGEMENT', Total Revenue: 1168029.5, Total Conversions: 4952, Count: 44            df.py:74
+                    INFO     Category: 'FASHION', Type: 'ENGAGEMENT', Total Revenue: 1222168.42, Total Conversions: 3625, Count: 38               df.py:74
+                    INFO     Category: 'HOME', Type: 'ENGAGEMENT', Total Revenue: 1223794.83, Total Conversions: 5036, Count: 51                  df.py:74
+                    INFO     Category: 'TOYS', Type: 'ENGAGEMENT', Total Revenue: 985486.8200000001, Total Conversions: 4199, Count: 43           df.py:74
+                    INFO     Category: 'FASHION' and Type: 'CONVERSION' with the most conversions: 5271                                           df.py:80
+                    INFO     Task 1.3 - End of Category and Type Performance                                                                      df.py:81
+                    INFO     Task 1.4 - Filter and Aggregate                                                                                      df.py:22
+                    INFO     Customer Id: 'Customer A', Status: 'ENABLED', Type: 'AWARENESS', Category: 'ELECTRONICS', Total Revenue:             df.py:43
+                             246634.58000000002, Total Conversions: 577, Count: 7                                                                         
+                    INFO     Customer Id: 'Customer A', Status: 'ENABLED', Type: 'AWARENESS', Category: 'FASHION', Total Revenue: 67544.88, Total df.py:43
+                             Conversions: 538, Count: 5                                                                                                   
+                    INFO     Customer Id: 'Customer A', Status: 'ENABLED', Type: 'AWARENESS', Category: 'HOME', Total Revenue: 242880.23, Total   df.py:43
+                             Conversions: 825, Count: 7                                                                                                   
+                    INFO     Customer Id: 'Customer A', Status: 'ENABLED', Type: 'AWARENESS', Category: 'TOYS', Total Revenue:                    df.py:43
+                             160686.21000000002, Total Conversions: 570, Count: 5                                                                         
+                    INFO     Customer Id: 'Customer A', Status: 'ENABLED', Type: 'CONVERSION', Category: 'ELECTRONICS', Total Revenue: 205273.39, df.py:43
+                             Total Conversions: 1117, Count: 9                                                                                            
+                    INFO     Customer Id: 'Customer A', Status: 'ENABLED', Type: 'CONVERSION', Category: 'FASHION', Total Revenue: 191568.25,     df.py:43
+                             Total Conversions: 787, Count: 8                                                                                             
+                    INFO     Customer Id: 'Customer A', Status: 'ENABLED', Type: 'CONVERSION', Category: 'HOME', Total Revenue: 87214.7, Total    df.py:43
+                             Conversions: 595, Count: 4                                                                                                   
+                    INFO     Customer Id: 'Customer A', Status: 'ENABLED', Type: 'CONVERSION', Category: 'TOYS', Total Revenue:                   df.py:43
+                             239416.16999999998, Total Conversions: 633, Count: 8                                                                         
+                    INFO     Customer Id: 'Customer A', Status: 'ENABLED', Type: 'ENGAGEMENT', Category: 'ELECTRONICS', Total Revenue: 151882.08, df.py:43
+                             Total Conversions: 822, Count: 7                                                                                             
+                    INFO     Customer Id: 'Customer A', Status: 'ENABLED', Type: 'ENGAGEMENT', Category: 'FASHION', Total Revenue: 239186.26,     df.py:43
+                             Total Conversions: 669, Count: 7                                                                                             
+                    INFO     Customer Id: 'Customer A', Status: 'ENABLED', Type: 'ENGAGEMENT', Category: 'HOME', Total Revenue: 292126.04, Total  df.py:43
+                             Conversions: 1166, Count: 11                                                                                                 
+                    INFO     Customer Id: 'Customer A', Status: 'ENABLED', Type: 'ENGAGEMENT', Category: 'TOYS', Total Revenue: 209568.93, Total  df.py:43
+                             Conversions: 694, Count: 9                                                                                                   
+                    INFO     Customer Id: 'Customer A', Status: 'HIDDEN', Type: 'AWARENESS', Category: 'ELECTRONICS', Total Revenue: 123426.95,   df.py:43
+                             Total Conversions: 436, Count: 5                                                                                             
+                    INFO     Customer Id: 'Customer A', Status: 'HIDDEN', Type: 'AWARENESS', Category: 'FASHION', Total Revenue: 326523.14, Total df.py:43
+                             Conversions: 1459, Count: 14                                                                                                 
+                    INFO     Customer Id: 'Customer A', Status: 'HIDDEN', Type: 'AWARENESS', Category: 'HOME', Total Revenue: 102446.28, Total    df.py:43
+                             Conversions: 754, Count: 5                                                                                                   
+                    INFO     Customer Id: 'Customer A', Status: 'HIDDEN', Type: 'AWARENESS', Category: 'TOYS', Total Revenue: 112996.52, Total    df.py:43
+                             Conversions: 256, Count: 5                                                                                                   
+                    INFO     Customer Id: 'Customer A', Status: 'HIDDEN', Type: 'CONVERSION', Category: 'ELECTRONICS', Total Revenue:             df.py:43
+                             164542.96000000002, Total Conversions: 591, Count: 6                                                                         
+                    INFO     Customer Id: 'Customer A', Status: 'HIDDEN', Type: 'CONVERSION', Category: 'FASHION', Total Revenue: 144127.51,      df.py:43
+                             Total Conversions: 320, Count: 5                                                                                             
+                    INFO     Customer Id: 'Customer A', Status: 'HIDDEN', Type: 'CONVERSION', Category: 'HOME', Total Revenue: 98481.64000000001, df.py:43
+                             Total Conversions: 435, Count: 4                                                                                             
+                    INFO     Customer Id: 'Customer A', Status: 'HIDDEN', Type: 'CONVERSION', Category: 'TOYS', Total Revenue: 121430.19, Total   df.py:43
+                             Conversions: 569, Count: 4                                                                                                   
+                    INFO     Customer Id: 'Customer A', Status: 'HIDDEN', Type: 'ENGAGEMENT', Category: 'ELECTRONICS', Total Revenue: 246208.65,  df.py:43
+                             Total Conversions: 863, Count: 9                                                                                             
+                    INFO     Customer Id: 'Customer A', Status: 'HIDDEN', Type: 'ENGAGEMENT', Category: 'FASHION', Total Revenue: 187173.04,      df.py:43
+                             Total Conversions: 818, Count: 7                                                                                             
+                    INFO     Customer Id: 'Customer A', Status: 'HIDDEN', Type: 'ENGAGEMENT', Category: 'HOME', Total Revenue: 272850.81, Total   df.py:43
+                             Conversions: 1195, Count: 11                                                                                                 
+                    INFO     Customer Id: 'Customer A', Status: 'HIDDEN', Type: 'ENGAGEMENT', Category: 'TOYS', Total Revenue: 130121.46, Total   df.py:43
+                             Conversions: 440, Count: 5                                                                                                   
+                    INFO     Customer Id: 'Customer B', Status: 'ENABLED', Type: 'AWARENESS', Category: 'ELECTRONICS', Total Revenue: 165106.82,  df.py:43
+                             Total Conversions: 789, Count: 10                                                                                            
+                    INFO     Customer Id: 'Customer B', Status: 'ENABLED', Type: 'AWARENESS', Category: 'FASHION', Total Revenue: 106332.27,      df.py:43
+                             Total Conversions: 379, Count: 5                                                                                             
+                    INFO     Customer Id: 'Customer B', Status: 'ENABLED', Type: 'AWARENESS', Category: 'HOME', Total Revenue: 38251.12, Total    df.py:43
+                             Conversions: 115, Count: 1                                                                                                   
+                    INFO     Customer Id: 'Customer B', Status: 'ENABLED', Type: 'AWARENESS', Category: 'TOYS', Total Revenue: 165462.5, Total    df.py:43
+                             Conversions: 939, Count: 8                                                                                                   
+                    INFO     Customer Id: 'Customer B', Status: 'ENABLED', Type: 'CONVERSION', Category: 'ELECTRONICS', Total Revenue: 165216.81, df.py:43
+                             Total Conversions: 640, Count: 8                                                                                             
+                    INFO     Customer Id: 'Customer B', Status: 'ENABLED', Type: 'CONVERSION', Category: 'FASHION', Total Revenue: 225877.98,     df.py:43
+                             Total Conversions: 1375, Count: 10                                                                                           
+                    INFO     Customer Id: 'Customer B', Status: 'ENABLED', Type: 'CONVERSION', Category: 'HOME', Total Revenue: 129951.21, Total  df.py:43
+                             Conversions: 575, Count: 5                                                                                                   
+                    INFO     Customer Id: 'Customer B', Status: 'ENABLED', Type: 'CONVERSION', Category: 'TOYS', Total Revenue: 130459.01, Total  df.py:43
+                             Conversions: 554, Count: 5                                                                                                   
+                    INFO     Customer Id: 'Customer B', Status: 'ENABLED', Type: 'ENGAGEMENT', Category: 'ELECTRONICS', Total Revenue: 253884.59, df.py:43
+                             Total Conversions: 821, Count: 8                                                                                             
+                    INFO     Customer Id: 'Customer B', Status: 'ENABLED', Type: 'ENGAGEMENT', Category: 'FASHION', Total Revenue: 170948.35,     df.py:43
+                             Total Conversions: 328, Count: 4                                                                                             
+                    INFO     Customer Id: 'Customer B', Status: 'ENABLED', Type: 'ENGAGEMENT', Category: 'HOME', Total Revenue: 139274.62, Total  df.py:43
+                             Conversions: 768, Count: 7                                                                                                   
+                    INFO     Customer Id: 'Customer B', Status: 'ENABLED', Type: 'ENGAGEMENT', Category: 'TOYS', Total Revenue:                   df.py:43
+                             316683.66000000003, Total Conversions: 1147, Count: 12                                                                       
+                    INFO     Customer Id: 'Customer B', Status: 'HIDDEN', Type: 'AWARENESS', Category: 'ELECTRONICS', Total Revenue: 137650.8,    df.py:43
+                             Total Conversions: 475, Count: 4                                                                                             
+                    INFO     Customer Id: 'Customer B', Status: 'HIDDEN', Type: 'AWARENESS', Category: 'FASHION', Total Revenue: 230586.94, Total df.py:43
+                             Conversions: 903, Count: 10                                                                                                  
+                    INFO     Customer Id: 'Customer B', Status: 'HIDDEN', Type: 'AWARENESS', Category: 'HOME', Total Revenue: 63446.9, Total      df.py:43
+                             Conversions: 534, Count: 4                                                                                                   
+                    INFO     Customer Id: 'Customer B', Status: 'HIDDEN', Type: 'AWARENESS', Category: 'TOYS', Total Revenue: 321677.52, Total    df.py:43
+                             Conversions: 968, Count: 12                                                                                                  
+                    INFO     Customer Id: 'Customer B', Status: 'HIDDEN', Type: 'CONVERSION', Category: 'ELECTRONICS', Total Revenue: 72994.42,   df.py:43
+                             Total Conversions: 680, Count: 5                                                                                             
+                    INFO     Customer Id: 'Customer B', Status: 'HIDDEN', Type: 'CONVERSION', Category: 'FASHION', Total Revenue: 324828.65,      df.py:43
+                             Total Conversions: 1156, Count: 11                                                                                           
+                    INFO     Customer Id: 'Customer B', Status: 'HIDDEN', Type: 'CONVERSION', Category: 'HOME', Total Revenue: 213526.02, Total   df.py:43
+                             Conversions: 926, Count: 8                                                                                                   
+                    INFO     Customer Id: 'Customer B', Status: 'HIDDEN', Type: 'CONVERSION', Category: 'TOYS', Total Revenue: 124364.81, Total   df.py:43
+                             Conversions: 377, Count: 4                                                                                                   
+                    INFO     Customer Id: 'Customer B', Status: 'HIDDEN', Type: 'ENGAGEMENT', Category: 'ELECTRONICS', Total Revenue:             df.py:43
+                             258675.27000000002, Total Conversions: 1211, Count: 9                                                                        
+                    INFO     Customer Id: 'Customer B', Status: 'HIDDEN', Type: 'ENGAGEMENT', Category: 'FASHION', Total Revenue: 183423.19,      df.py:43
+                             Total Conversions: 401, Count: 5                                                                                             
+                    INFO     Customer Id: 'Customer B', Status: 'HIDDEN', Type: 'ENGAGEMENT', Category: 'HOME', Total Revenue:                    df.py:43
+                             190542.91999999998, Total Conversions: 749, Count: 7                                                                         
+                    INFO     Customer Id: 'Customer B', Status: 'HIDDEN', Type: 'ENGAGEMENT', Category: 'TOYS', Total Revenue: 172275.35, Total   df.py:43
+                             Conversions: 614, Count: 7                                                                                                   
+                    INFO     Customer Id: 'Customer C', Status: 'ENABLED', Type: 'AWARENESS', Category: 'ELECTRONICS', Total Revenue: 273476.01,  df.py:43
+                             Total Conversions: 1013, Count: 9                                                                                            
+                    INFO     Customer Id: 'Customer C', Status: 'ENABLED', Type: 'AWARENESS', Category: 'FASHION', Total Revenue: 328577.39,      df.py:43
+                             Total Conversions: 1091, Count: 14                                                                                           
+                    INFO     Customer Id: 'Customer C', Status: 'ENABLED', Type: 'AWARENESS', Category: 'HOME', Total Revenue: 197945.87, Total   df.py:43
+                             Conversions: 664, Count: 7                                                                                                   
+                    INFO     Customer Id: 'Customer C', Status: 'ENABLED', Type: 'AWARENESS', Category: 'TOYS', Total Revenue: 96557.79000000001, df.py:43
+                             Total Conversions: 545, Count: 4                                                                                             
+                    INFO     Customer Id: 'Customer C', Status: 'ENABLED', Type: 'CONVERSION', Category: 'ELECTRONICS', Total Revenue:            df.py:43
+                             39183.659999999996, Total Conversions: 127, Count: 2                                                                         
+                    INFO     Customer Id: 'Customer C', Status: 'ENABLED', Type: 'CONVERSION', Category: 'FASHION', Total Revenue:                df.py:43
+                             237826.91999999998, Total Conversions: 707, Count: 8                                                                         
+                    INFO     Customer Id: 'Customer C', Status: 'ENABLED', Type: 'CONVERSION', Category: 'HOME', Total Revenue: 102623.97, Total  df.py:43
+                             Conversions: 536, Count: 4                                                                                                   
+                    INFO     Customer Id: 'Customer C', Status: 'ENABLED', Type: 'CONVERSION', Category: 'TOYS', Total Revenue: 33647.56, Total   df.py:43
+                             Conversions: 354, Count: 4                                                                                                   
+                    INFO     Customer Id: 'Customer C', Status: 'ENABLED', Type: 'ENGAGEMENT', Category: 'ELECTRONICS', Total Revenue:            df.py:43
+                             141829.97999999998, Total Conversions: 531, Count: 5                                                                         
+                    INFO     Customer Id: 'Customer C', Status: 'ENABLED', Type: 'ENGAGEMENT', Category: 'FASHION', Total Revenue: 179765.32,     df.py:43
+                             Total Conversions: 603, Count: 7                                                                                             
+                    INFO     Customer Id: 'Customer C', Status: 'ENABLED', Type: 'ENGAGEMENT', Category: 'HOME', Total Revenue: 117940.34, Total  df.py:43
+                             Conversions: 492, Count: 7                                                                                                   
+                    INFO     Customer Id: 'Customer C', Status: 'ENABLED', Type: 'ENGAGEMENT', Category: 'TOYS', Total Revenue: 31087.86, Total   df.py:43
+                             Conversions: 353, Count: 3                                                                                                   
+                    INFO     Customer Id: 'Customer C', Status: 'HIDDEN', Type: 'AWARENESS', Category: 'ELECTRONICS', Total Revenue: 199085.61,   df.py:43
+                             Total Conversions: 492, Count: 7                                                                                             
+                    INFO     Customer Id: 'Customer C', Status: 'HIDDEN', Type: 'AWARENESS', Category: 'FASHION', Total Revenue: 241788.79, Total df.py:43
+                             Conversions: 749, Count: 8                                                                                                   
+                    INFO     Customer Id: 'Customer C', Status: 'HIDDEN', Type: 'AWARENESS', Category: 'HOME', Total Revenue: 127130.95, Total    df.py:43
+                             Conversions: 854, Count: 7                                                                                                   
+                    INFO     Customer Id: 'Customer C', Status: 'HIDDEN', Type: 'AWARENESS', Category: 'TOYS', Total Revenue: 191987.84, Total    df.py:43
+                             Conversions: 747, Count: 9                                                                                                   
+                    INFO     Customer Id: 'Customer C', Status: 'HIDDEN', Type: 'CONVERSION', Category: 'ELECTRONICS', Total Revenue: 73788.67,   df.py:43
+                             Total Conversions: 293, Count: 4                                                                                             
+                    INFO     Customer Id: 'Customer C', Status: 'HIDDEN', Type: 'CONVERSION', Category: 'FASHION', Total Revenue: 291760.64,      df.py:43
+                             Total Conversions: 926, Count: 10                                                                                            
+                    INFO     Customer Id: 'Customer C', Status: 'HIDDEN', Type: 'CONVERSION', Category: 'HOME', Total Revenue: 234178.1, Total    df.py:43
+                             Conversions: 762, Count: 9                                                                                                   
+                    INFO     Customer Id: 'Customer C', Status: 'HIDDEN', Type: 'CONVERSION', Category: 'TOYS', Total Revenue: 160663.39, Total   df.py:43
+                             Conversions: 836, Count: 7                                                                                                   
+                    INFO     Customer Id: 'Customer C', Status: 'HIDDEN', Type: 'ENGAGEMENT', Category: 'ELECTRONICS', Total Revenue: 115548.93,  df.py:43
+                             Total Conversions: 704, Count: 6                                                                                             
+                    INFO     Customer Id: 'Customer C', Status: 'HIDDEN', Type: 'ENGAGEMENT', Category: 'FASHION', Total Revenue: 261672.26,      df.py:43
+                             Total Conversions: 806, Count: 8                                                                                             
+                    INFO     Customer Id: 'Customer C', Status: 'HIDDEN', Type: 'ENGAGEMENT', Category: 'HOME', Total Revenue: 211060.1, Total    df.py:43
+                             Conversions: 666, Count: 8                                                                                                   
+                    INFO     Customer Id: 'Customer C', Status: 'HIDDEN', Type: 'ENGAGEMENT', Category: 'TOYS', Total Revenue: 125749.56, Total   df.py:43
+                             Conversions: 951, Count: 7                                                                                                   
+                    INFO     Customer Id: 'Customer A', Average Revenue: 26084.475208333333, Average Conversions: 105.14583333333333              df.py:54
+                    INFO     Customer Id: 'Customer B', Average Revenue: 24771.766249999997, Average Conversions: 112.19642857142857              df.py:54
+                    INFO     Customer Id: 'Customer C', Average Revenue: 24451.51895833333, Average Conversions: 94.60416666666667                df.py:54
+                    INFO     Task 1.4 - End of Filter and Aggregate                                                                               df.py:57

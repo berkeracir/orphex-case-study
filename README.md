@@ -99,3 +99,12 @@ python manage.py createsuperuser
 
 - Swagger API for provided endpoint
 - Unit tests
+- Cache structure for endpoints, where cache will be only evicted by process-data
+
+## Deliverables
+
+- Logs from Data Analysis part: [task1-logs.txt](./output/task1-logs.txt)
+- ![Endpoint 1: /api/conversion-rate/](./deliverables/task2-1.png "Endpoint 1: /api/conversion-rate/")
+- ![Endpoint 2: /api/status-distribution/](./deliverables/task2-1.png "Endpoint 2: /api/status-distribution/")
+- ![Endpoint 3: /api/category-type-performance/](./deliverables/task2-1.png "Endpoint 3: /api/category-type-performance/")
+- ![Endpoint 4: /api/filtered-aggregation/](./deliverables/task2-1.png "Endpoint 4: /api/filtered-aggregation/")
