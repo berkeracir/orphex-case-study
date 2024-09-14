@@ -19,11 +19,11 @@ def create_or_update_customer_conversion_rates(customer_conversion_rates: List[C
     """
     sql = dedent(
         f"""
-        INSERT INTO `{CustomerConversionRate._meta.db_table}` (`customer_id`, `total_conversions`, `total_revenue`, `rate`)
-        VALUES (%(customer_id)s, %(total_conversions)s, %(total_revenue)s, %(rate)s)
+        INSERT INTO `{CustomerConversionRate._meta.db_table}` (`customer_id`, `total_revenue`, `total_conversions`, `rate`)
+        VALUES (%(customer_id)s, %(total_revenue)s, %(total_conversions)s, %(rate)s)
         ON CONFLICT (`customer_id`) DO UPDATE SET
-            `total_conversions` = `total_conversions` + `excluded`.`total_conversions`,
             `total_revenue` = `total_revenue` + `excluded`.`total_revenue`,
+            `total_conversions` = `total_conversions` + `excluded`.`total_conversions`,
             `rate` = (
                 CASE
                     WHEN (`total_revenue` + `excluded`.`total_revenue` == 0) THEN 0.0

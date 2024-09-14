@@ -6,7 +6,6 @@ class AbstractBaseModel(models.Model):
         abstract = True
 
     def __str__(self) -> str:
-        class_name = self.__class__.__name__
         field_names_and_values = [f"{key}={value}" for key, value in self.__dict__.items() if not str(key).startswith("_")]
         return f"{", ".join(field_names_and_values)}"
 
@@ -36,11 +35,35 @@ class CustomerConversionRate(AbstractBaseModel):
 
 class StatusDistribution(AbstractBaseModel):
     id = models.AutoField(primary_key=True)
-    status_id = models.ForeignKey(Status, on_delete=models.RESTRICT)
-    type_id = models.ForeignKey(Type, on_delete=models.RESTRICT)
-    category_id = models.ForeignKey(Category, on_delete=models.RESTRICT)
+    fk_status = models.ForeignKey(Status, on_delete=models.RESTRICT)
+    fk_type = models.ForeignKey(Type, on_delete=models.RESTRICT)
+    fk_category = models.ForeignKey(Category, on_delete=models.RESTRICT)
     total_revenue = models.FloatField(null=False)
     total_conversions = models.PositiveBigIntegerField(null=False)
 
     class Meta:
-        unique_together = ("status_id", "type_id", "category_id")
+        unique_together = ("fk_status", "fk_type", "fk_category")
+
+    @property
+    def status_id(self) -> int:
+        return self.fk_status.id
+
+    @property
+    def status(self) -> str:
+        return self.fk_status.text
+
+    @property
+    def type_id(self) -> int:
+        return self.fk_type.id
+
+    @property
+    def type(self) -> str:
+        return self.fk_type.text
+
+    @property
+    def category_id(self) -> int:
+        return self.fk_category.id
+
+    @property
+    def category(self) -> str:
+        return self.fk_category.text
