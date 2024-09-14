@@ -36,7 +36,9 @@ def process_data(request: Request) -> Response:
     unique_types = get_unique_values(df, "type")
     unique_categories = get_unique_values(df, "category")
 
+    # task 1.1 - conversion rate calculation
     customer_conversion_rates = get_customer_conversion_rates(df[["customer_id", "revenue", "conversions"]])
+    # task 1.2 - status-based analysis
     status_distributions = get_status_distributions(df[["revenue", "conversions", "status", "type", "category"]])
 
     try:
@@ -47,8 +49,6 @@ def process_data(request: Request) -> Response:
 
             create_or_update_customer_conversion_rates(customer_conversion_rates)
             create_or_update_status_distributions(status_distributions, statuses, types, categories)
-
-        logger.debug(f"statuses={statuses}, types={types}, categories={categories}")
     except BaseException:
         logger.exception("Failed to create or update DB models.")
         return Response(status=HTTP_500_INTERNAL_SERVER_ERROR)

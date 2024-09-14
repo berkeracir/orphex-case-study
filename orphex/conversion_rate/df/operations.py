@@ -18,12 +18,27 @@ def get_customer_conversion_rates(df: pd.DataFrame) -> List[CustomerConversionRa
     Returns:
         List[CustomerConversionRateTuple]: List of CustomerConversionRate tuples
     """
-    grouped_by_df = df.groupby("customer_id").sum().reset_index()
+    logger.info("Task 1.1 - Conversion Rate Calculation")
+
+    df = df.groupby("customer_id").sum().reset_index()
+    df["rate"] = df["conversions"] / df["revenue"]
 
     result = []
-    for customer_id, conversions, revenue in zip(
-        grouped_by_df["customer_id"], grouped_by_df["conversions"], grouped_by_df["revenue"]
+    for customer_id, total_revenue, total_conversions, rate in zip(
+        df["customer_id"], df["revenue"], df["conversions"], df["rate"]
     ):
-        result.append(CustomerConversionRateTuple(customer_id=customer_id, total_conversions=conversions, total_revenue=revenue))
+        result.append(
+            CustomerConversionRateTuple(
+                customer_id=customer_id, total_revenue=total_revenue, total_conversions=total_conversions
+            )
+        )
+        logger.info(f"Customer id: {customer_id}, conversion rate: {rate}")
+
+    # identify customer_ids with lowest and highest conversion rates.
+    customer_id_with_lowest_conversation_rate = df.iloc[df["rate"].idxmin()]["customer_id"]
+    customer_id_with_highest_conversation_rate = df.iloc[df["rate"].idxmax()]["customer_id"]
+    logger.info(f"Customer id with the lowest conversation rate: '{customer_id_with_lowest_conversation_rate}'")
+    logger.info(f"Customer id with the highest conversation rate: '{customer_id_with_highest_conversation_rate}'")
+    logger.info("Task 1.1 - End of Conversion Rate Calculation")
 
     return result

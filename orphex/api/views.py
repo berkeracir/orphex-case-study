@@ -19,9 +19,7 @@ logger = logging.getLogger("orphex.api.views")
 def get_customer_conversion_rates(request: Request) -> Response:
     # TODO(berker) pagination?
     conversion_rates = get_customer_conversion_rates_from_db()
-    serializer = ConversionRatesSerializer(
-        {"conversion_rates": ConversionRateSerializer(conversion_rates, many=True).data}
-    )
+    serializer = ConversionRatesSerializer({"conversion_rates": ConversionRateSerializer(conversion_rates, many=True).data})
     return Response(status=HTTP_200_OK, data=serializer.data)
 
 
