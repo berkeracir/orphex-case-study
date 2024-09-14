@@ -20,7 +20,7 @@ def create_or_update_statuses(statuses: List[str]) -> List[Status]:
         return []
 
     result = Status.objects.bulk_create(
-        [Status(status=status) for status in statuses], update_conflicts=True, update_fields=["status"], unique_fields=["status"]
+        [Status(text=status) for status in statuses], update_conflicts=True, update_fields=["text"], unique_fields=["text"]
     )
     return result
 
@@ -38,7 +38,7 @@ def create_or_update_types(types: List[str]) -> List[Type]:
         return []
 
     result = Type.objects.bulk_create(
-        [Type(type=type) for type in types], update_conflicts=True, update_fields=["type"], unique_fields=["type"]
+        [Type(text=type) for type in types], update_conflicts=True, update_fields=["text"], unique_fields=["text"]
     )
     return result
 
@@ -56,9 +56,9 @@ def create_or_update_categories(categories: List[str]) -> List[Category]:
         return []
 
     result = Category.objects.bulk_create(
-        [Category(category=category) for category in categories],
+        [Category(text=category) for category in categories],
         update_conflicts=True,
-        update_fields=["category"],
-        unique_fields=["category"],
+        update_fields=["text"],
+        unique_fields=["text"],
     )
     return result

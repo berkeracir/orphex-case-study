@@ -13,24 +13,24 @@ class AbstractBaseModel(models.Model):
 
 class Status(AbstractBaseModel):
     id = models.SmallAutoField(primary_key=True)
-    status = models.TextField(null=False, unique=True)
+    text = models.TextField(null=False, unique=True)
 
 
 class Type(AbstractBaseModel):
     id = models.SmallAutoField(primary_key=True)
-    type = models.TextField(null=False, unique=True)
+    text = models.TextField(null=False, unique=True)
 
 
 class Category(AbstractBaseModel):
     id = models.SmallAutoField(primary_key=True)
-    category = models.TextField(null=False, unique=True)
+    text = models.TextField(null=False, unique=True)
 
 
 class CustomerConversionRate(AbstractBaseModel):
     id = models.AutoField(primary_key=True)
     customer_id = models.TextField(null=False, unique=True)
-    total_conversions = models.PositiveBigIntegerField(null=False)
     total_revenue = models.FloatField(null=False)
+    total_conversions = models.PositiveBigIntegerField(null=False)
     rate = models.FloatField(null=False, db_index=True)
 
 
@@ -39,8 +39,8 @@ class StatusDistribution(AbstractBaseModel):
     status_id = models.ForeignKey(Status, on_delete=models.RESTRICT)
     type_id = models.ForeignKey(Type, on_delete=models.RESTRICT)
     category_id = models.ForeignKey(Category, on_delete=models.RESTRICT)
-    conversions = models.PositiveBigIntegerField(null=False)
-    revenues = models.FloatField(null=False)
+    total_revenue = models.FloatField(null=False)
+    total_conversions = models.PositiveBigIntegerField(null=False)
 
     class Meta:
         unique_together = ("status_id", "type_id", "category_id")
