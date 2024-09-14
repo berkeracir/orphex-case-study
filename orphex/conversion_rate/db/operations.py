@@ -18,15 +18,15 @@ def create_or_update_customer_conversion_rates(customer_conversion_rates: List[C
     """
     sql = dedent(
         f"""
-        INSERT INTO `{CustomerConversionRate._meta.db_table}` (`customer_id`, `conversions`, `revenues`, `rate`)
-        VALUES (%(customer_id)s, %(conversions)s, %(revenues)s, %(rate)s)
+        INSERT INTO `{CustomerConversionRate._meta.db_table}` (`customer_id`, `total_conversions`, `total_revenue`, `rate`)
+        VALUES (%(customer_id)s, %(total_conversions)s, %(total_revenue)s, %(rate)s)
         ON CONFLICT (`customer_id`) DO UPDATE SET
-            `conversions` = `conversions` + `excluded`.`conversions`,
-            `revenues` = `revenues` + `excluded`.`revenues`,
+            `total_conversions` = `total_conversions` + `excluded`.`total_conversions`,
+            `total_revenue` = `total_revenue` + `excluded`.`total_revenue`,
             `rate` = (
                 CASE
-                    WHEN (`revenues` + `excluded`.`revenues` == 0) THEN 0.0
-                    ELSE (`conversions` + `excluded`.`conversions`) / (`revenues` + `excluded`.`revenues`)
+                    WHEN (`total_revenue` + `excluded`.`total_revenue` == 0) THEN 0.0
+                    ELSE (`total_conversions` + `excluded`.`total_conversions`) / (`total_revenue` + `excluded`.`total_revenue`)
                 END
             );
         """
@@ -35,8 +35,8 @@ def create_or_update_customer_conversion_rates(customer_conversion_rates: List[C
     param_list = [
         {
             "customer_id": customer_conversion_rate.customer_id,
-            "conversions": customer_conversion_rate.conversions,
-            "revenues": customer_conversion_rate.revenues,
+            "total_conversions": customer_conversion_rate.total_conversions,
+            "total_revenue": customer_conversion_rate.total_revenue,
             "rate": customer_conversion_rate.rate,
         }
         for customer_conversion_rate in customer_conversion_rates

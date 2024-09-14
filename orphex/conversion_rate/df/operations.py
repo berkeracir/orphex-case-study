@@ -25,6 +25,6 @@ def get_customer_conversion_rates(df: pd.DataFrame) -> List[CustomerConversionRa
         grouped_by_df["customer_id"], grouped_by_df["conversions"], grouped_by_df["revenue"]
     ):
         rate = conversions / revenue if revenue != 0 else 0
-        result.append(CustomerConversionRate(customer_id=customer_id, conversions=conversions, revenues=revenue, rate=rate))
+        result.append(CustomerConversionRate(customer_id=customer_id, total_conversions=conversions, total_revenue=revenue, rate=rate))
 
     return result
