@@ -4,17 +4,18 @@ from typing import List
 
 from django.db import connection
 
+from orphex.conversion_rate.types import CustomerConversionRateTuple
 from orphex.models import CustomerConversionRate
 
 
 logger = logging.getLogger("orphex.conversion_rate.db.operations")
 
 
-def create_or_update_customer_conversion_rates(customer_conversion_rates: List[CustomerConversionRate]):
-    """Creates or updates CustomerConversionRate models
+def create_or_update_customer_conversion_rates(customer_conversion_rates: List[CustomerConversionRateTuple]):
+    """Creates or updates CustomerConversionRate models from CustomerConversionRate tuples
 
     Args:
-        customer_conversion_rates (List[CustomerConversionRate]): List of CustomerConversionRate instances
+        customer_conversion_rates (List[CustomerConversionRateTuple]): List of CustomerConversionRate tuples
     """
     sql = dedent(
         f"""
@@ -37,7 +38,11 @@ def create_or_update_customer_conversion_rates(customer_conversion_rates: List[C
             "customer_id": customer_conversion_rate.customer_id,
             "total_conversions": customer_conversion_rate.total_conversions,
             "total_revenue": customer_conversion_rate.total_revenue,
-            "rate": customer_conversion_rate.rate,
+            "rate": (
+                customer_conversion_rate.total_conversions / customer_conversion_rate.total_revenue
+                if customer_conversion_rate.total_revenue != 0
+                else 0
+            ),
         }
         for customer_conversion_rate in customer_conversion_rates
     ]

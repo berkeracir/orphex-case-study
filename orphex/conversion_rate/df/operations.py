@@ -3,20 +3,20 @@ from typing import List
 
 import pandas as pd
 
-from orphex.models import CustomerConversionRate
+from orphex.conversion_rate.types import CustomerConversionRateTuple
 
 
 logger = logging.getLogger("orphex.conversion_rate.df.operations")
 
 
-def get_customer_conversion_rates(df: pd.DataFrame) -> List[CustomerConversionRate]:
+def get_customer_conversion_rates(df: pd.DataFrame) -> List[CustomerConversionRateTuple]:
     """Gets each customer's conversion to revenue rates from the given data frame
 
     Args:
         df (pd.DataFrame): DataFrame containing 'customer_id', 'conversions' and 'revenue' columns
 
     Returns:
-        List[CustomerConversionRate]: List of CustomerConversionRate models
+        List[CustomerConversionRateTuple]: List of CustomerConversionRate tuples
     """
     grouped_by_df = df.groupby("customer_id").sum().reset_index()
 
@@ -24,7 +24,6 @@ def get_customer_conversion_rates(df: pd.DataFrame) -> List[CustomerConversionRa
     for customer_id, conversions, revenue in zip(
         grouped_by_df["customer_id"], grouped_by_df["conversions"], grouped_by_df["revenue"]
     ):
-        rate = conversions / revenue if revenue != 0 else 0
-        result.append(CustomerConversionRate(customer_id=customer_id, total_conversions=conversions, total_revenue=revenue, rate=rate))
+        result.append(CustomerConversionRateTuple(customer_id=customer_id, total_conversions=conversions, total_revenue=revenue))
 
     return result

@@ -15,7 +15,8 @@ from orphex.common.db.operations import (
 )
 from orphex.common.df.operations import get_unique_values
 from orphex.conversion_rate.db.operations import create_or_update_customer_conversion_rates
-from orphex.conversion_rate.df.operations import get_customer_conversion_rates as get_customer_conversion_rates_from_df
+from orphex.conversion_rate.df.operations import get_customer_conversion_rates
+from orphex.status_distribution.df.operations import get_status_distribution
 
 
 logger = logging.getLogger("orphex.worker.views")
@@ -34,7 +35,8 @@ def process_data(request: Request) -> Response:
     unique_types = get_unique_values(df, "type")
     unique_categories = get_unique_values(df, "category")
 
-    customer_conversion_rates = get_customer_conversion_rates_from_df(df[["customer_id", "revenue", "conversions"]])
+    customer_conversion_rates = get_customer_conversion_rates(df[["customer_id", "revenue", "conversions"]])
+    status_distribution = get_status_distribution(df[["revenue", "conversions", "status", "type", "category"]])
 
     try:
         with transaction.atomic():
