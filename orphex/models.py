@@ -31,4 +31,4 @@ class CustomerConversionRate(AbstractBaseModel):
     customer_id = models.TextField(null=False, unique=True)
     conversions = models.PositiveBigIntegerField(null=False)
     revenues = models.FloatField(null=False)
-    rate = models.FloatField(null=False)
+    rate = models.FloatField(null=False, db_index=True)
